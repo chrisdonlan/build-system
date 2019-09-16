@@ -1,3 +1,24 @@
+The goal of this project to to finish off, for my personal purposes, one build system/architecture to "rule them all":
+
+It should be 
+
+1) Multilingual (in terms of computer languages) without forcing any interweaving of languages (even for C/Cpp this appears to be a mistake)
+
+2) Fully-Integrated (from, at least, a language and build perspective).  It should make use of all the modern tools available via the open-source community, but it should work on the native system (I am a vim user, so: vim). 
+
+3) It should be procedurally powerful (examples of this include: Cmake, automake), but it should be as adaptable as a language (i.e., gnu-make).  Note that virtually everything Cmake does can be replaced by "getting gud" at `make`, and making use of the command line tools (i.e., `find`). 
+  
+  -- This pays dividends down the line, as `make` is essentially the world's oldest automation framework
+  -- GNU R integrates well with `make` as an automation language inside `make`'s procedural system
+  -- GNU R also provides visualization capabilities
+  -- Make can be used to coordinate other automation frameworks, manage databases--in otherwords, it is an effective procedural glue
+  
+4) Remote and Distributed Stability/integration: the system should allow the developer (me) to spread a project out across multiple boxes without (A) losing control, or (B) having to deploy an entire "system" that takes one entire brain to deploy, use and curate.
+
+5) Finally, I should improve upon the methodologies used for tab completion within the context of my project framework.  I believe thish should be as simple is knitting together the native bash (or zsh) completion api, and improving/adapting a particular `make all -> JSON database` project to a database that gets filled by a make crawler running (pseudocode) `for command in make_command_list; do load_database $(make -n $(command)); done` in the background (as a simple example). 
+
+6) If I want to, set up a project visualization tool that can map out and visualize my project.  Perhaps I can deploy machine learning on the database data I am able to gather as I use the tool. 
+
 # Universal Words
 
 ```
