@@ -1,0 +1,4 @@
+source_files=$(find . -maxdepth 0 -type f -name .*rc)
+for file in $source_files; do
+	source $file
+done

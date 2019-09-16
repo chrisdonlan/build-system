@@ -1,0 +1,4 @@
+include .universal/*.mk
+.PHONY:
+env:
+	env
