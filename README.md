@@ -32,16 +32,27 @@ make test
 
 # Universal Files
 
-Universal Files are installed to node via symlink
+Universal Files are installed to node via symlink to `.universal`
 ```
-.cfg.mk
+
+.universal/cfg.mk
  // universal vars
  ROOT
  PREV
  NODE
  NAME
  BRANCHES
+ 
+ .universal/commands.mk
+ ...
+  
+ .universal/etc.
 ```
+Usage is currently going to be handled with BASH scripts scoped to minimal varienty: the user is informed of the metavariables involved in executing a `.PHONY` make command, and is prompted to confirm the objective.  Running the make command with the flag `-y` will accept whatever the defaults are and execute.  
+
+Currently, the universal makes will all be imported...meaning the `bash-completion` output from a `make <tab><tab>` will soon lose effectiveness.  
+
+When this happens, I'll be forced to deal with the tab completion in a side project that allows for contextualized make tab completion.  I have a few ideas on how to implement this effectively, but it is a bridge best crossed after the problem becomes a problem. 
 
 # Universal Commands
 
