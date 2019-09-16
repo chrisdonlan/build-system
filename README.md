@@ -9,8 +9,11 @@ It should be
 3) It should be procedurally powerful (examples of this include: Cmake, automake), but it should be as adaptable as a language (i.e., gnu-make).  Note that virtually everything Cmake does can be replaced by "getting gud" at `make`, and making use of the command line tools (i.e., `find`). 
   
   a) This pays dividends down the line, as `make` is essentially the world's oldest automation framework
+  
   b) GNU R integrates well with `make` as an automation language inside `make`'s procedural system
-  c) GNU R also provides visualization capabilities
+  
+  c) GNU R also provides visualization capabilitiesrun bash script with make environment exported
+  
   d) Make can be used to coordinate other automation frameworks, manage databases--in otherwords, it is an effective procedural glue
   
 4) Remote and Distributed Stability/integration: the system should allow the developer (me) to spread a project out across multiple boxes without (A) losing control, or (B) having to deploy an entire "system" that takes one entire brain to deploy, use and curate.
