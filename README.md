@@ -1,3 +1,27 @@
+The goal of this project to to finish off, for my personal purposes, one build system/architecture to "rule them all":
+
+It should be 
+
+1) Multilingual (in terms of computer languages) without forcing any interweaving of languages (even for C/Cpp this appears to be a mistake)
+
+2) Fully-Integrated (from, at least, a language and build perspective).  It should make use of all the modern tools available via the open-source community, but it should work on the native system (I am a vim user, so: vim). 
+
+3) It should be procedurally powerful (examples of this include: Cmake, automake), but it should be as adaptable as a language (i.e., gnu-make).  Note that virtually everything Cmake does can be replaced by "getting gud" at `make`, and making use of the command line tools (i.e., `find`). 
+  
+  a) This pays dividends down the line, as `make` is essentially the world's oldest automation framework
+  
+  b) GNU R integrates well with `make` as an automation language inside `make`'s procedural system
+  
+  c) GNU R also provides visualization capabilitiesrun bash script with make environment exported
+  
+  d) Make can be used to coordinate other automation frameworks, manage databases--in otherwords, it is an effective procedural glue
+  
+4) Remote and Distributed Stability/integration: the system should allow the developer (me) to spread a project out across multiple boxes without (A) losing control, or (B) having to deploy an entire "system" that takes one entire brain to deploy, use and curate.
+
+5) Finally, I should improve upon the methodologies used for tab completion within the context of my project framework.  I believe thish should be as simple is knitting together the native bash (or zsh) completion api, and improving/adapting a particular `make all -> JSON database` project to a database that gets filled by a make crawler running (pseudocode) `for command in make_command_list; do load_database $(make -n $(command)); done` in the background (as a simple example). 
+
+6) If I want to, set up a project visualization tool that can map out and visualize my project.  Perhaps I can deploy machine learning on the database data I am able to gather as I use the tool. 
+
 # Universal Words
 
 ```
@@ -8,16 +32,27 @@ make test
 
 # Universal Files
 
-Universal Files are installed to node via symlink
+Universal Files are installed to node via symlink to `.universal`
 ```
-.cfg.mk
+
+.universal/cfg.mk
  // universal vars
  ROOT
  PREV
  NODE
  NAME
  BRANCHES
+ 
+ .universal/commands.mk
+ ...
+  
+ .universal/etc.
 ```
+Usage is currently going to be handled with BASH scripts scoped to minimal varienty: the user is informed of the metavariables involved in executing a `.PHONY` make command, and is prompted to confirm the objective.  Running the make command with the flag `-y` will accept whatever the defaults are and execute.  
+
+Currently, the universal makes will all be imported...meaning the `bash-completion` output from a `make <tab><tab>` will soon lose effectiveness.  
+
+When this happens, I'll be forced to deal with the tab completion in a side project that allows for contextualized make tab completion.  I have a few ideas on how to implement this effectively, but it is a bridge best crossed after the problem becomes a problem. 
 
 # Universal Commands
 
