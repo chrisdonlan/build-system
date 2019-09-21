@@ -11,8 +11,12 @@ Usage:         make new-node [new_node_name=name] [new_node_type=optional]
 
                Available Types:
 
-`find .universal/node/schematics -name *.mk -type f | basename -s .mk | awk '{printf "                   "$1}'`
-
+`
+find ${ROOT}/.universal/node/schematics -name *.mk -type f \
+	 | sort -u \
+	 | xargs -I arg basename -s .mk arg \
+	 | awk '{printf "                   "$1"\n"}'
+`
 
                'make -y' will suppress this message
 "
