@@ -2,19 +2,19 @@
 construct-node-c: src lib exe obj .link .include
 
 src:
-	mkdir src
+	-mkdir src
 
 lib:
-	mkdir lib
+	-mkdir lib
 
 exe:
-	mkdir exe
+	-mkdir exe
 
 obj:
-	mkdir obj
+	-mkdir obj
 
 .link:
-	touch .link
+	-touch .link
 
 .include:
-	touch .include
+	-touch .include

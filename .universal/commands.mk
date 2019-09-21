@@ -16,8 +16,18 @@ new-node:
 	cd $(new_node_name) && ${MAKE} construct-node-${new_node_type}
 
 .PHONY:
+overlay-node:
+	./.universal/usage/overlay-node.sh ${MFLAGS}
+	cd $(node_name) && ${MAKE} construct-node-${node_type}
+
+
+.PHONY:
 c-node:
 	${MAKE} new-node new_node_type=c
+
+.PHONY:
+R-node:
+	${MAKE} new-node new_node_type=R
 
 
 .PHONY:

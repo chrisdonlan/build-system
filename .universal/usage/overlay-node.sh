@@ -6,15 +6,15 @@ Usage:         make new-node [new_node_name=name] [new_node_type=optional]
 
                Current (or Default) Values:
 
-               new_node_name := ${new_node_name}
-               new_node_type := ${new_node_type}
+               node_name := ${node_name}
+               overlay_type := ${overlay_type}
 
                Available Types:
 
 `find .universal/node/schematics -name *.mk -type f | basename -s .mk | awk '{printf "                   "$1}'`
 
 
-               'make -y' will suppress this message
+               'make -s' will suppress this message
 "
 }
 error_msg(){
@@ -31,20 +31,12 @@ fail_empty(){
 	fi
 }
 
-fail_empty $new_node_name new_node_name
-fail_empty $new_node_type new_node_type
-while getopts 'y' opt; do
+fail_empty $node_name node_name
+fail_empty $overlay_type overlay_type
+
+while getopts 's' opt; do
   case ${opt} in
-    y) exit 0;;
+    s) exit 0;;
   esac
 done
-
 usage
-echo "Confirm [y]?"
-read -n 1 confirm
-if [ "$confirm" == "y" ]; then
-  echo ""
-  exit 0
-else
-  exit 1
-fi

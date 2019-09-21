@@ -1,4 +1,10 @@
 include .universal/*.mk
+
+.PHONY:
+install:
+	test -e .setup && ./.setup
+
+
 .PHONY:
 env:
 	env
