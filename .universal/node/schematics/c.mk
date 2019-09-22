@@ -1,6 +1,9 @@
 .PHONY:
 construct-node-c: src lib exe obj .link .include
 
+main:
+	-mkdir main
+
 src:
 	-mkdir src
 

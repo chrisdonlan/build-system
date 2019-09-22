@@ -2,23 +2,34 @@ ifndef __UNIVERSAL_COMMANDS_MK__
 include .universal/cfg.mk
 include .universal/node/schematics/*.mk
 
-export new_node_name:=foo
-export new_node_type:=none
 .PHONY:
-new-node:
-	# usage script?
+new-node-usage:
 	./.universal/usage/new-node.sh ${MFLAGS}
-	mkdir $(new_node_name)
-	cd $(new_node_name) && ln -s ${ROOT}/.universal .universal
-	cd $(new_node_name) && cp .universal/raw_makefile makefile
-	cd $(new_node_name) && cp .universal/.raw_bash_profile .bash_profile
-	touch $(new_node_name)/.pipreqs.txt
+
+.PHONY:
+new-node: new-node-usage
+	$(eval new_node_name=$(shell read -p "Node Name? " nn; echo $$nn))
+	$(eval new_node_type=$(shell read -p "Node Type? " nt; echo $$nt))
+	-mkdir $(new_node_name)
+	-cd $(new_node_name) && ln -s ${ROOT}/.universal .universal
+	-cd $(new_node_name) \
+		&& cp .universal/raw_makefile makefile \
+		&& echo "include .universal/node/makes/${new_node_type}.mk" >> makefile
+	-cd $(new_node_name) && cp .universal/.raw_bash_profile .bash_profile
+	-touch $(new_node_name)/.pipreqs.txt
 	cd $(new_node_name) && ${MAKE} construct-node-${new_node_type}
 
 .PHONY:
-overlay-node:
+overlay-node-usage:
 	./.universal/usage/overlay-node.sh ${MFLAGS}
-	cd $(node_name) && ${MAKE} construct-node-${node_type}
+
+.PHONY:
+overlay-node: overlay-node-usage
+	$(eval node_name=$(shell read -p "Node Name? " nn; echo $$nn))
+	$(eval node_type=$(shell read -p "Node Type? " nt; echo $$nt))
+	cd $(node_name) \
+		&& ${MAKE} construct-node-${node_type}
+		&& echo "include .universal/node/makes/${node_type}.mk" >> makefile
 
 
 .PHONY:
