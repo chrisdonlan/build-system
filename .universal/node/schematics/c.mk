@@ -1,5 +1,5 @@
 .PHONY:
-construct-node-c: src lib exe obj .link .include
+construct-node-c: main src lib exe obj .link .include
 
 main:
 	-mkdir main
